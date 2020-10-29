@@ -46,7 +46,7 @@ for (i = 0; i < thisArray.length; i++) {
     if (i === 0) {
       thisArray.shift();
     } else {
-    thisArray.splice(prev, 2);
+    thisArray.splice(i - 1, 2);
   }
   }
 }
