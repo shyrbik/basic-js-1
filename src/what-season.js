@@ -1,12 +1,13 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(date) {
-  
-if (date === null || date === undefined) return 'Unable to determine the time of year!';
-// if (date.length !== 7) return "Error"
+let errUn = 'Unable to determine the time of year!';
+if ((date === null) || (date === undefined)) return errUn;
+ if (date.getTime() % 1 !== 0) return "Error";
+let errErr = 'Error';
 let check = date.toString.call(date);
 let string = date.toString();
-if (check !== string) return "Error";
+if (check !== string) return errErr;
   let month = date.getMonth();
   let seasons = [
     [11, 0, 1],
@@ -44,3 +45,4 @@ if (check !== string) return "Error";
     }
   //throw new CustomError('Not implemented');
   // remove line with error and write your code here
+
