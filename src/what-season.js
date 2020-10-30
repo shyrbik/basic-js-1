@@ -16,14 +16,10 @@ if (check !== string) return errErr;
     [8, 9, 10]];
     let result;
     for (let i = 0; i < seasons.length; i++) {
-        console.log('i = ' +i);
         let currentArray = seasons[i];
-        console.log('currentArray: ' + currentArray)
         let index = currentArray.indexOf(month);
-        console.log('index = ' + index)
         if (index !== -1) {
              result = i;
-             console.log('result = ' + result)
         }
     }
     let currentMonth;
