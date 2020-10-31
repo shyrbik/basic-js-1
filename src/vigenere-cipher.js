@@ -56,11 +56,13 @@ class VigenereCipheringMachine {
     let alfabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     let keyLong = key;
     let deCryptedArr = [];
+    let sum;
     while (keyLong.length < message.length) {
       keyLong += key;
     }
-    let messageArray = message.split('');
-    let keyArray = keyLong.split('');
+    let messageArray = message.toUpperCase().split('');
+    let keyArray = keyLong.toUpperCase().split('');
+    console.log(`keyArray = ${keyArray}`)
     for (let i = 0; i < messageArray.length; i++) {
       function checkIndexMes(index) {
         return index === messageArray[i]
@@ -74,7 +76,14 @@ class VigenereCipheringMachine {
           return index === keyArray[i]
           }
         let keyNumb = alfabet.findIndex(checkIndexKey);
-        let sum = Math.abs(messageNumb - keyNumb);
+        if (messageNumb > keyNumb) { 
+         // console.log ('m>K');
+        sum = Math.abs(messageNumb - keyNumb)
+        } else {
+         // console.log ('m<K');
+        sum = Math.abs(messageNumb + 26 - keyNumb)
+        }
+        //console.log(`sum = ${sum}, messageNumb = ${messageNumb}, keyNumb = ${keyNumb}`)
         while (sum > 25) {
           sum = Math.abs(sum - 26);
         }
@@ -93,6 +102,6 @@ class VigenereCipheringMachine {
   }    
   }
   //const directMachine = new VigenereCipheringMachine();
- // console.log(directMachine.encrypt('Samelengthkey', 'Samelengthkey'));  'KAYIWIAMMOUIW';
+ //console.log(directMachine.decrypt('UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js')) //'LEARN FRONTEND DEVELOPMENT :)'
 
 module.exports = VigenereCipheringMachine;
