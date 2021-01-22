@@ -9,3 +9,4 @@ module.exports = function countCats(array) {
     }
   return countCats;
 };
+
